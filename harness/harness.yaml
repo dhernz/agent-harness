@@ -1,0 +1,25 @@
+# Harness rules, read by the PM on every cycle. Paths and timings for the scripts are in harness/config.sh.
+project: my-project            # CHANGE
+
+agents:                        # CHANGE: must match harness/agents/*.json and the table in CLAUDE.md
+  pm:       { model: claude-fable-5-1, cwd: repo,     role: reviews and merges every PR, runs checkpoints with QA, keeps STATUS.md current }
+  backend:  { model: claude-opus-5,    cwd: worktree, role: apps/api, packages/db, infra }
+  frontend: { model: claude-opus-5,    cwd: worktree, role: apps/web }
+  qa:       { model: claude-opus-5,    cwd: worktree, role: packages/test-kit, workflows, checkpoints }
+
+pm_cycle:
+  # The PM runs this loop itself with Claude Code's /loop, independent of the heartbeat.
+  interval_minutes: 10
+  steps:
+    - list open PRs to staging
+    - for each PR with green CI, review against packages/contracts and the PM rulings; merge if no blocker, else comment the blockers
+    - after merges, tell each agent to rebase on origin/staging and continue its next milestone
+    - run the next checkpoint script when its artefacts exist; record the result in state.json
+    - regenerate STATUS.md
+  merge_policy:
+    require_ci_green: true
+    docs_only_prs: merge without review
+    blockers:                  # CHANGE: the things that must never reach staging in your product
+      - secrets committed
+      - contract mismatch
+      - tests missing for new code

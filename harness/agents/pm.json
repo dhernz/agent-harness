@@ -1,0 +1,8 @@
+{
+  "name": "pm",
+  "model": "claude-fable-5-1",
+  "workspace": "pm",
+  "session_id": null,
+  "phase": 0,
+  "standby": false
+}

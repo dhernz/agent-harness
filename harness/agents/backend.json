@@ -1,0 +1,8 @@
+{
+  "name": "backend",
+  "model": "claude-opus-5",
+  "workspace": "backend",
+  "session_id": null,
+  "phase": 0,
+  "standby": false
+}

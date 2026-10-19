@@ -1,0 +1,4 @@
+harness/runtime/*.json
+harness/heartbeat.log
+harness/phases/*.last.log
+.env*

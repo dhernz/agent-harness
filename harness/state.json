@@ -1,0 +1,10 @@
+{
+  "project": "my-project",
+  "updated": null,
+  "phases": [
+    { "id": 0, "name": "Foundation", "owner": "pm", "status": "in_progress", "checkpoint": null },
+    { "id": 1, "name": "Contracts and agent plans", "owner": "pm", "status": "fail", "checkpoint": null },
+    { "id": 2, "name": "First feature slice", "owner": "backend,frontend", "status": "fail", "checkpoint": null },
+    { "id": 3, "name": "Staging acceptance and release", "owner": "qa,pm", "status": "fail", "checkpoint": null }
+  ]
+}
