@@ -44,7 +44,7 @@ are the links in case you want them:
 Open the Terminal app and run:
 
 ```bash
-git clone https://github.com/altananetwork/agent-harness.git
+git clone https://github.com/dhernz/agent-harness.git
 cd agent-harness
 claude --model claude-fable-5-1
 ```
@@ -92,3 +92,7 @@ from sleeping, and keep the lid open. A sleeping Mac stops every agent mid-sente
 Everything you need is in **[`harness/PM-SETUP.md`](harness/PM-SETUP.md)**:
 the prerequisites to check, what to configure, how to launch the engineers and
 the heartbeat, and the loop you run. The user should not need to open that file.
+
+## License
+
+MIT. See [LICENSE](LICENSE).

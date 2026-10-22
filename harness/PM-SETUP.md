@@ -51,8 +51,8 @@ The user cloned the template itself. Ask which case applies:
   and keep the project's existing rules. From here on, work in the project's
   folder, not this clone.
 - **A new project.** Create its own repo from the template, so it doesn't push
-  to `altananetwork/agent-harness`:
-  `gh repo create <user-or-org>/<name> --private --template altananetwork/agent-harness --clone`.
+  to `dhernz/agent-harness`:
+  `gh repo create <user-or-org>/<name> --private --template dhernz/agent-harness --clone`.
   Then work in that new folder.
 
 Make sure the project's main checkout is on `staging`. It is yours and stays
