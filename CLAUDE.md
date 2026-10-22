@@ -19,7 +19,8 @@ any agent spawns, runs on Opus 5 (`claude --model claude-opus-5`).
 
 ## How an agent starts and works
 
-1. Read `harness/state.json`, then your brief in `docs/briefs/<agent>.md`.
+1. Read `harness/state.json`, `docs/product.md` (the goal and what "done"
+   means), `docs/rules.md`, then your brief in `docs/briefs/<agent>.md`.
 2. Write your plan in `docs/plans/<agent>.md`. The PM reviews it against
    `packages/contracts` before you build. Do not build before that review.
 3. Record your session in `harness/agents/<agent>.json` (session id, phase).

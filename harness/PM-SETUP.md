@@ -60,10 +60,25 @@ on `staging`. Never build in it.
 
 ## Step 2: interview the user
 
-Get answers to the user checklist in the README (product, repo, team,
-closed decisions, secrets file location, designs). Ask in plain language, a
-few questions at a time. If they don't know something, propose a default and
-write it down as an assumption in `harness/QUESTIONS.md`.
+Get answers to the user checklist in the README (product, goal and what
+"done" means, repo, team, closed decisions, secrets file location, designs,
+instructions and rules). Ask in plain language, a few questions at a time. If
+they don't know something, propose a default and write it down as an
+assumption in `harness/QUESTIONS.md`.
+
+**The goal and "done" come first, and you do not launch without them.** The
+engineers only know what you hand them, so this interview decides the quality
+of everything they build.
+
+- Push for a "done" the user can check: what a user can do, where (local or
+  staging), and what they see. Turn every item into a check in
+  `harness/phases/<n>.sh`. If an item can't be checked, ask until it can.
+- Collect every material the engineers will need: mockups and screenshots go
+  in `docs/design/`, written instructions and rules in `docs/rules.md`, links
+  and reference docs in `docs/product.md`. Ask for anything that's referenced
+  but missing ("you mentioned a style guide; can you share it?").
+- Every brief names the exact files and links that engineer needs. An
+  engineer should never have to ask for something the user already gave you.
 
 ## Step 3: configure the files
 
@@ -75,15 +90,17 @@ write it down as an assumption in `harness/QUESTIONS.md`.
 | `harness/harness.yaml` | The same agent list, and the merge blockers: what must never reach `staging` for this product (secrets, contract mismatches, missing tests, plus anything product-specific). |
 | `harness/state.json` | `project`, and the phases: id, name, owner(s) (comma-separated agent names), `status` (`in_progress` / `fail` / `pass`). Start with Foundation (pm), then Contracts and plans (pm), then feature phases, then Staging acceptance (qa, pm). |
 | `harness/phases/<n>.sh` | One script per phase, built on `phases/lib.sh`. Each line is a check that exits 0 when it's true. A check that can't run yet must FAIL and name its owner, never skip. Replace the example in `0.sh`. |
-| `docs/product.md` | The product as the user described it: users, flows, screens. |
-| `docs/briefs/<agent>.md` | One brief per engineer, from `TEMPLATE.md`: what to build, the rules, and what "done" means (the checks it owns). |
+| `docs/product.md` | The product as the user described it: the goal, what "done" means, users, flows, screens, reference links. |
+| `docs/design/`, `docs/rules.md` | The user's mockups and screenshots, and their written instructions and rules. |
+| `docs/briefs/<agent>.md` | One brief per engineer, from `TEMPLATE.md`: what to build, the materials it needs (exact files and links), the rules, and what "done" means (the checks it owns). |
 
 Then set up GitHub:
 - Create `staging` and `main` branches. Protect `staging` so it accepts merges only through PRs.
 - Add CI that runs the tests on every PR to `staging`. You merge only when it's green.
 - Commit the configuration to `staging`.
 
-Show the user a short summary (team, phases, closed decisions) and get a yes before step 4.
+Show the user a short summary (goal, what "done" means, team, phases, closed
+decisions, and the materials each engineer gets) and get a yes before step 4.
 
 ## Step 4: move into cmux and launch the team
 

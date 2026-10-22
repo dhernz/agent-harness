@@ -12,6 +12,29 @@ project, then configures everything and launches the team.
 
 ---
 
+## The most important part: tell the PM what "done" means
+
+The team is only as good as what you give the PM. The engineers never talk to
+you directly. Everything they know comes from the PM, so anything you don't give
+the PM, they won't have. Before the team starts, give the PM:
+
+- **The goal.** What you're building and why, in a paragraph.
+- **What "done" means.** Concrete things you can check, for example "a user
+  signs up with Google, uploads a photo and sees it on their dashboard, on
+  staging". Vague goals like "make it work well" give you vague results. The
+  PM turns each item into an automated check, and no phase is finished until
+  its checks pass.
+- **Everything the engineers need to do the work:** mockups, designs or
+  screenshots, written instructions, rules (style, libraries, what's off
+  limits), example data, links to docs, and access to the accounts and
+  services they'll use.
+
+The PM saves all of it in the repo (`docs/`) and hands the relevant parts to
+each engineer in its brief. If something is missing, the engineers guess,
+and you end up fixing their guesses later.
+
+---
+
 ## Who does what
 
 | | You (the user) | Your agent (the PM) |
@@ -62,11 +85,13 @@ It will:
   to sign in to GitHub. Do it, then tell the agent you're done.
 - **ask about your project.** Have these ready:
   - **what the product is:** a paragraph, and the main things a user does with it.
+  - **the goal and what "done" means:** the checkable list described above. This is the most important answer.
   - **your project's GitHub repo:** an existing one, or ask the agent to create one.
   - **the team you want:** for example backend, frontend and testing. If you're not sure, the agent will suggest one.
   - **decisions you've already made:** where it's hosted, which database, how users sign in, which AI models, and anything that's off limits. Each decision you give is one the engineers won't keep asking about.
   - **where your passwords and API keys are:** a private file on your machine. It never goes into the repo.
   - **designs, if you have them:** mockups, a Figma link, or screenshots.
+  - **instructions and rules:** anything the engineers must follow or avoid, and any docs or examples they should copy from.
 - **show you a summary** of the team and plan, and wait for your yes.
 - **move itself into cmux.** It opens a cmux tab named `pm` and carries on
   there. From then on, talk to the PM in that tab. A tab opens for each
