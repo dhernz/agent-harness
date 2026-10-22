@@ -1,4 +1,4 @@
-# Agent harness
+# Agent Team harness
 
 This lets you run a small AI software team on your project. One AI acts as the
 **project manager (PM)**. It plans the work, hands it to AI **engineers**
